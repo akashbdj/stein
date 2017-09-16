@@ -8,7 +8,7 @@
     we compare it with each of the cards already in the hand, from right to left.
     At all times, the cards held in the left hand are sorted,
     and these cards were originally the top cards of the pile on the table.
-    
+
     We present our pseudocode for insertion sort as a procedure called INSERTION- SORT,
     which takes as a parameter an array A[1..n] containing a sequence of length n that is to be sorted.
     The algorithm sorts the input numbers in place: it rearranges the numbers within the array A,
