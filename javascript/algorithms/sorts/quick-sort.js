@@ -84,17 +84,28 @@
  *      1. In place - no extra space unlike MERGE SORT
  *      2. Time - N log N
  *      3. Worst Case - array is already sorted. 1/2 N^2. That's shuffling array is needed for performace guarantee.
- *      4. Average Number of comparison - 2N Log N
- *      5. Number of exchanges - 1/2 N Log N
+ *      4. Average Number of comparison - 2N Log N 🤔
+ *      5. Number of exchanges - 1/2 N Log N 🤔
  *      5. Why faster than Merge Sort? Less data movement. No auxilliary array.
  *
  *  Caveat:
- *      Quick Sort is not stable.
+ *      Quick Sort is not stable. 🙄
  *      Partitioning can cause long range exchanges.
- *      Duplicate values can create problems.
+ *      Duplicate values can create problems. Can go quadratic times. 😰🤢
+ *          Solution to Duplicate Keys => Stop partitioning at equal keys.
+ *
  *  Improvements:
  *      Choose Insertion sort for small sub-arrays.
  *      Prefer choosing median as your pivot. (low + (high - low)/2)
+ *
+ * Better Solution: (Discovered by Dijkstra 🙌🏼)
+ *      3 WAY PARTITIONING: (Dutch Nation Flag Problem 🤓🇳🇱)
+ *      [_, ...< Pivot.., ...= Pivot..., > Pivot....,_]
+ *      🔺              i              j             k      ===> 3 pointers i, j & k.
+ *
+ *      Every item to left of i is less than Pivot.
+ *      Every item between i & j is equal to Pivot.
+ *      Every item to right of j is greater than Pivot.
  */
 
 
