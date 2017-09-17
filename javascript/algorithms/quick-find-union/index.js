@@ -174,7 +174,7 @@ quf.isConnected(1, 4)
 
 
 /**
- * Quick Union Weighted - Bette than Quick Union.
+ * Quick Union Weighted - Better than Quick Union.
  * Why better?
  *  => Avoids tall trees. How? Keep track of the size of each tree.
  *  => Balances by linking root of the small tree to root of larger tree.
@@ -265,7 +265,71 @@ class QuickUnionWeighted {
         }
 
         this.ids[rootQ] = rootP
-        this.treeSize[rootP] += this.treeSize[rootQ] // add size of tree p to q
+        this.treeSize[rootP] += this.treeSize[rootQ] // add size of tree q to p
     }
 
 }
+
+
+
+
+
+/**
+ * Quick Union Weighted with PATH COMPRESSION
+ *
+ * Quick Union (Weighted/Unweighted) can further be improved. How?
+ * Let's examine the problem first.
+ *      While finding the root of p, we touch each and every node in the PATH
+ *      till we reach the root. Is it necessary? Absolutely NOT!
+ *
+ *      Then what?
+ *          =>  Just after finding the root of 'p', set id of each examined node
+ *              to point to that root. In otherwords, make every other node in
+ *              the path to point to it's grandparent (thereby halving path length).
+ *
+ *      Example:
+ *        0   1   2   3   4   5   6   7   8   9
+ *      [ 0,  1,  8,  2,  3,  5,  5,  7,  8,  9 ]
+ *
+ *      Without Path Compression:
+ *          Consider this code:
+ *              while (ids[i] !== i) {
+ *                  i = ids[i]
+ *              }
+ *          Now, Find root of 4.
+ *              Step 1: ids[4] => 3, i becomes = 3
+ *              Step 2: ids[3] => 2, i becomes = 2
+ *              Step 3: ids[2] => 8, i becomes = 8
+ *              Step 4: ids[8] => 8, loop terminates and we found the root of 4 which is 8
+ *
+ *      With Path Compression
+ *          Consider this code:
+ *              while (ids[i] !== i) {
+ *                  ids[i] = ids[ids[i]]    <= Notice this line -> grandparent thing done here.
+ *                  i = ids[i]
+ *              }
+ *
+ *          Now, Find root of 4.
+ *              Step 1: ids[4] => 3, ids[ids[4]] => 2, i becomes = 2
+ *              Step 2: ids[2] => 8, ids[ids[2]] => 8, i becomes = 8.
+ *                      Woah! Loop terminates here. 😱
+ *
+ *          Did you see any difference in the number of steps? Yeah? Exactly that's why it runs super fast. 😎
+ *          Number of steps will reduce significantly as we traverse more and more node. ↓
+ *
+ * So, what's the best part of this improvement?
+ *  YOU ADD ONE SINGLE LINE TO YOUR EXISTING QUICK UNION (WEIGHTED/UNWEIGNTED) codebase, and IT'S FAST! 😎 😎 😎
+ *
+ * Change to code:
+ *      In you 'getRootOf' method, add this line: ids[i] = ids[ids[i]]
+ *      It becomes:
+ *          getRootOf (i) {
+ *              let ids = this.ids
+ *              while (ids[i] !== i) {
+ *                  i = ids[i]
+ *              }
+ *              return i
+ *           }
+ *
+ * Complexities: log*N (Read as log star N) which is the number of time you run log N to get to 1. 😅
+ */
