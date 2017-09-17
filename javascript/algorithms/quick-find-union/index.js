@@ -4,8 +4,6 @@
 
 
 /**
- * Basic implementation.
- *
  * [ids array of integers]
  * @type {Array}
  * This is a QUICK FIND because 'find' operation is simple, whereas
@@ -21,7 +19,7 @@
  *  2. Union is too expensive. N array access.
  */
 
-class QuickFUBasic {
+class QuickFind {
 
     constructor (size) {
         this.ids = []
@@ -61,7 +59,7 @@ class QuickFUBasic {
     }
 }
 
-const quf = new QuickFUBasic(6)
+const quf = new QuickFind(6)
 quf.isConnected(2, 4) // false
 quf.union(2, 4)
 quf.isConnected(2, 4) // true
@@ -73,8 +71,6 @@ quf.isConnected(1, 2) // true => 2 & 4 are connected and 1 & 4 are connected. so
 
 
 /**
- * Better implementation.
- *
  * [ids array of integers]
  * @type {Array}
  *
@@ -125,7 +121,7 @@ quf.isConnected(1, 2) // true => 2 & 4 are connected and 1 & 4 are connected. so
  *  2. Finding can be very expensive (N array access)
  */
 
-class QuickFUBetter {
+class QuickUnion {
 
     constructor (size) {
         this.ids = []
@@ -160,13 +156,116 @@ class QuickFUBetter {
     union (p, q) {
         let rootP = this.getRootOf(p)
         let rootQ = this.getRootOf(q)
+
+        if (rootP === rootQ) return
         this.ids[rootP] = rootQ
     }
 }
 
-const quf = new QuickFUBetter(10)
+const quf = new QuickUnion(10)
 quf.isConnected(2, 4)
 quf.union(2, 4)
 quf.isConnected(2, 4)
 quf.union(1, 2)
 quf.isConnected(1, 4)
+
+
+
+
+
+/**
+ * Quick Union Weighted - Bette than Quick Union.
+ * Why better?
+ *  => Avoids tall trees. How? Keep track of the size of each tree.
+ *  => Balances by linking root of the small tree to root of larger tree.
+ *
+ *  0  1  2  3  4  5  6  7  8  9
+ *  Do. union(3, 4)
+ *
+ *  0   1   2   3   5   6   7   8   9
+ *             /
+ *            4
+ *
+ *  Now, do union(4, 8)
+ *
+ *  0   1   2   3   5   6   7   9
+ *             /\
+ *            4  8
+ *
+ * Notice, we merged 8 to (3,4) instead of (3,4) to 8. Why? Because 8 is a smaller tree
+ * and (3,4) is larger tree. So, ALWAYS MERGE SMALLER TREE TO A LARGER TREE.
+ *
+ * Overhead:
+ *  Extra array to maintain the size of each tree that tells number of objects in the
+ *  tree rooted at 'i'.
+ *
+ * FIND: Same as Quick Union
+ *
+ * Complexities:
+ *  Find: proportional to the depth of p and q -> log N
+ *  Union: Constant time, given roots. Otherwise - log N because it
+ *  involves find roots which is log N.
+ *
+ * Depth of any node is log N
+ *
+ * Entire code is same as Quick Union except for the implementation of
+ * 'union' method where we check the size of both trees before appending
+ * one tree to another.
+ *
+ * In simple words, find the roots of both p and q. Append either p to q or q to p
+ * depending on the size of p and q.
+ * If size of p is small -> add it to q, vice-versa.
+ *
+ * Why fast? Since the size of the tree is now very small (log N), find operation runs fast.
+ */
+
+class QuickUnionWeighted {
+
+    constructor (size) {
+        this.ids = []
+        this.treeSize = []
+        for (let i = 0; i < size; i++) {
+            this.ids[i] = i
+        }
+    }
+
+    isConnected (p, q) {
+        return this.getRootOf(p) === this.getRootOf(q)
+    }
+
+    /**
+     * This is basically the 'FIND' operation.
+     * [getRootOf finds the root of the given item in an array]
+     * @param  {[type]} i [item whose root we are finding]
+     * @return {[type]}   [root of the given index i]
+     */
+    getRootOf (i) {
+        let ids = this.ids
+        while (ids[i] !== i) {
+            i = ids[i]
+        }
+        return i
+    }
+
+    /**
+     * [union Change root of 'p' to point to root of 'q']
+     * @param  {[type]} p [item to connect to q]
+     * @param  {[type]} q [item to connect to p]
+     */
+    union (p, q) {
+        let rootP = this.getRootOf(p)
+        let rootQ = this.getRootOf(q)
+
+        if (rootP === rootQ) return
+
+        if (this.treeSize[p] < this.treeSize[q]) {
+            this.ids[rootP] = rootQ
+            this.treeSize[rootQ] += this.treeSize[rootP] // add size of tree p to q
+            return
+        }
+
+        this.ids[rootQ] = rootP
+        this.treeSize[rootP] += this.treeSize[rootQ] // add size of tree p to q
+    }
+
+}
