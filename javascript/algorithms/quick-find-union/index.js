@@ -292,7 +292,7 @@ class QuickUnionWeighted {
  *      [ 0,  1,  8,  2,  3,  5,  5,  7,  8,  9 ]
  *
  *      Without Path Compression:
- *          Consider this code:
+ *          Consider this code from 'getRootOf' method:
  *              while (ids[i] !== i) {
  *                  i = ids[i]
  *              }
@@ -303,7 +303,7 @@ class QuickUnionWeighted {
  *              Step 4: ids[8] => 8, loop terminates and we found the root of 4 which is 8
  *
  *      With Path Compression
- *          Consider this code:
+ *          Consider this code from 'getRootOf' method:
  *              while (ids[i] !== i) {
  *                  ids[i] = ids[ids[i]]    <= Notice this line -> grandparent thing done here.
  *                  i = ids[i]
@@ -326,6 +326,7 @@ class QuickUnionWeighted {
  *          getRootOf (i) {
  *              let ids = this.ids
  *              while (ids[i] !== i) {
+ *                  ids[i] = ids[ids[i]]
  *                  i = ids[i]
  *              }
  *              return i
