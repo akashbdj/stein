@@ -4,7 +4,7 @@ Data Structures and Algorithms implementation in JavaScript.
 Topics covered:
 
 - [x] Insertion Sort
-- [] Quick Sort
+- [x] Quick Sort
 - [x] Quick Union/Find
     - [x] Quick Find
     - [x] Quick Union
