@@ -315,10 +315,13 @@ class QuickUnionWeighted {
  *                      Woah! Loop terminates here. 😱
  *
  *          Did you see any difference in the number of steps? Yeah? Exactly that's why it runs super fast. 😎
- *          Number of steps will reduce significantly as we traverse more and more node. ↓
+ *          Number of steps will reduce significantly as we traverse more and more nodes. ↓
+ *
+ *          More importantly, it will keep your tree as flat as possible. That's what we want in real situations.
+ *          Flat Trees => Less Depth => Easy Search => Better Algorithm.
  *
  * So, what's the best part of this improvement?
- *  YOU ADD ONE SINGLE LINE TO YOUR EXISTING QUICK UNION (WEIGHTED/UNWEIGNTED) codebase, and IT'S FAST! 😎 😎 😎
+ *      👉🏼 YOU ADD ONE SINGLE LINE TO YOUR EXISTING QUICK UNION (WEIGHTED/UNWEIGNTED) codebase, and IT'S FAST! 😎 😎 😎
  *
  * Change to code:
  *      In you 'getRootOf' method, add this line: ids[i] = ids[ids[i]]
