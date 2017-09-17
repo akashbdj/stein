@@ -174,7 +174,7 @@ quf.isConnected(1, 4)
 
 
 /**
- * Quick Union Weighted - Better than Quick Union.
+ * Quick Union Weighted (Also, Union with Rank) - Better than Quick Union.
  * Why better?
  *  => Avoids tall trees. How? Keep track of the size of each tree.
  *  => Balances by linking root of the small tree to root of larger tree.
@@ -283,9 +283,9 @@ class QuickUnionWeighted {
  *      till we reach the root. Is it necessary? Absolutely NOT!
  *
  *      Then what?
- *          =>  Just after finding the root of 'p', set id of each examined node
- *              to point to that root. In otherwords, make every other node in
- *              the path to point to it's grandparent (thereby halving path length).
+ *          Just after finding the root of 'p', set id of each examined node
+ *          to point to that root. In other words, make every other node in
+ *          the path to point to its grandparent (thereby halving path length).
  *
  *      Example:
  *        0   1   2   3   4   5   6   7   8   9
@@ -302,7 +302,7 @@ class QuickUnionWeighted {
  *              Step 3: ids[2] => 8, i becomes = 8
  *              Step 4: ids[8] => 8, loop terminates and we found the root of 4 which is 8
  *
- *      With Path Compression
+ *      With Path Compression:
  *          Consider this code from 'getRootOf' method:
  *              while (ids[i] !== i) {
  *                  ids[i] = ids[ids[i]]    <= Notice this line -> grandparent thing done here.
@@ -318,13 +318,13 @@ class QuickUnionWeighted {
  *          Number of steps will reduce significantly as we traverse more and more nodes. ↓
  *
  *          More importantly, it will keep your tree as flat as possible. That's what we want in real situations.
- *          Flat Trees => Less Depth => Easy Search => Better Algorithm.
+ *          Flat Trees => Less Depth => Easy Search => Better Performance.
  *
  * So, what's the best part of this improvement?
- *      👉🏼 YOU ADD ONE SINGLE LINE TO YOUR EXISTING QUICK UNION (WEIGHTED/UNWEIGNTED) codebase, and IT'S FAST! 😎 😎 😎
+ *      👉🏼 YOU ADD ONE SINGLE LINE TO YOUR EXISTING QUICK UNION (WEIGHTED/UNWEIGNTED) codebase, and You're DONE! 😎 😎 😎
  *
  * Change to code:
- *      In you 'getRootOf' method, add this line: ids[i] = ids[ids[i]]
+ *      In your 'getRootOf' method, add this line: ids[i] = ids[ids[i]]
  *      It becomes:
  *          getRootOf (i) {
  *              let ids = this.ids
@@ -335,5 +335,20 @@ class QuickUnionWeighted {
  *              return i
  *           }
  *
- * Complexities: log*N (Read as log star N) which is the number of time you run log N to get to 1. 😅
+ * Complexities: log*N (Read as log star N) which is the number of times you run log N to get to 1. 😅
+ */
+
+
+
+
+
+
+
+/**
+ *  Applications of Disjoint Sets (Union and Find)
+ *
+ *      1. Check if graph(undirected) contains a cycle or not.
+ *      2. Kruskal's Algorithm - Minimum Spanning Tree.
+ *      3. Least Common Ancestor.
+ *
  */
