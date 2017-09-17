@@ -1,7 +1,7 @@
 /**
  *  Quick Sort (Recursive program that uses partitioning method described below)
  *
- *  SHUFFLE is need to guarantee performace.
+ *  SHUFFLE is needed to guarantee performace.
  *
  *  It has 2 main steps.
  *      1. Partitioning.
@@ -11,7 +11,7 @@
  *             => no smaller entry to the right of 'j'
  *      2. Sort each piece recursively.
  *
- * Pivot - choosen arbitarily - is the partitioning element.
+ * Pivot - chosen arbitarily - is the partitioning element.
  *
  * How it works?
  *      1. Take two pointers, i & j.
@@ -30,7 +30,7 @@
  *      Example:
  *      [K  R   A   T   E   L   E   P   U]
  *       🔺 i                           j
- *      Partitioning element(PIVOT) : arr[0] which is K. (choosen arbitarily) Denoted by symbol 🔺
+ *      Partitioning element(PIVOT) : arr[0] which is K. (chosen arbitarily) Denoted by symbol 🔺
  *      i & j are our pointers. Now follow above conditions.
  *
  *      i stops immediately because (R > K) arr[i] > arr[pivot]  ----> Check condition 2 above.
@@ -80,7 +80,13 @@
  *
  *          <========================       T H A T' S   H O W   Q U I C K   S O R T   W O R K S        ============================>
  *
- *
+ *  Complexities:
+ *      1. In place - no extra space unlike MERGE SORT
+ *      2. Time - N log N
+ *      3. Worst Case - array is already sorted. 1/2 N^2. That's shuffling array is needed for performace guarantee.
+ *      4. Average Number of comparison - 2N Log N
+ *      5. Number of exchanges - 1/2 N Log N
+ *      5. Why faster than Merge Sort? Less data movement. No auxilliary array.
  */
 
 
