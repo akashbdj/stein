@@ -1,7 +1,12 @@
-## Stein 
+## Stein
 Data Structures and Algorithms implementation in JavaScript.
 
 Topics covered:
 
 - [x] Insertion Sort
-- [x] Quick Find - Union
+- [] Quick Sort
+- [x] Quick Union/Find
+    - [x] Quick Find
+    - [x] Quick Union
+    - [x] Quick Union Weighted
+    - [x] Quick Union (Weighted/Unweighted) with Path Compression
