@@ -87,6 +87,14 @@
  *      4. Average Number of comparison - 2N Log N
  *      5. Number of exchanges - 1/2 N Log N
  *      5. Why faster than Merge Sort? Less data movement. No auxilliary array.
+ *
+ *  Caveat:
+ *      Quick Sort is not stable.
+ *      Partitioning can cause long range exchanges.
+ *      Duplicate values can create problems.
+ *  Improvements:
+ *      Choose Insertion sort for small sub-arrays.
+ *      Prefer choosing median as your pivot. (low + (high - low)/2)
  */
 
 
