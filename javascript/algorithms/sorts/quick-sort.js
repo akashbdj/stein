@@ -98,14 +98,8 @@
  *      Choose Insertion sort for small sub-arrays.
  *      Prefer choosing median as your pivot. (low + (high - low)/2)
  *
- * Better Solution: (Discovered by Dijkstra 🙌🏼)
- *      3 WAY PARTITIONING: (Dutch National Flag Problem 🤓🇳🇱)
- *      [_, ...< Pivot.., ...= Pivot..., > Pivot....,_]
- *      🔺              i              j             k      ===> 3 pointers i, j & k.
+ * Better Solution: Continue reading below Quick implementation.
  *
- *      Every item to left of i is less than Pivot.
- *      Every item between i & j is equal to Pivot.
- *      Every item to right of j is greater than Pivot.
  */
 
 
@@ -172,3 +166,27 @@ const low = 0
 const high = arr.length - 1
 const quick = new Quick(arr)
 quick.sort(low, high)
+
+
+
+
+
+/**
+ * Better Solution: (Discovered by Dijkstra 🙌🏼)
+ *      3 WAY PARTITIONING: (Dutch National Flag Problem 🤓🇳🇱)
+ *      [_, ...< Pivot.., ...= Pivot..., > Pivot....,_]
+ *      low            lt             gt           high ===> 2 pointers in the middle - lt & gt (lt - less than & gt - greater than)
+ *
+ *      Every item to left of lt is less than Pivot.
+ *      Every item between lt & gt is equal to Pivot.
+ *      Every item to right of gt is greater than Pivot.
+ *
+ *      Example:
+ *          Consider this array:
+ *
+ *          lt  i                                               gt
+ *          [P  A   B   X   W   P   P   V   P   D   C   P   Y   Z]
+ *          🔺                                                  high
+ *          low
+ *
+ */
