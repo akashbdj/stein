@@ -268,7 +268,7 @@ quick.sort(low, high)
  *        →   arr[i], which is D, is less than Pivot(P).
  *             swap arr[i] and arr[lt]. Increment both 'i' & 'lt'
  *              Resulting Array:
- *                              lt                  i/gt
+ *                              lt             i/gt
  *              [A  B   C   D   P   P   P   P   P   V   W   Y   Z   X]
  *                              🔺
  *
