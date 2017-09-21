@@ -287,7 +287,7 @@ quick.sort(low, high)
  *              Yes! That's what we wanted. So, we are done with PARTITIONING.😅
  *
  *
- *              DO IT RECURSIVELY TO SORT THE ENTIRE ARRAY! 🕺🏻
+ *              DO IT RECURSIVELY ON 2 HALVES (left and right) TO SORT THE ENTIRE ARRAY! 🕺🏻
  *
  *  Code? Check below!
  */
