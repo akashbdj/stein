@@ -15,6 +15,7 @@ Topics covered:
 - [ ] Priority Queues
     - [ ] Binary Heaps
     - [ ] Heap Sort
+- [ ] Linked Lists
 - [ ] Trees
     - [ ] Binary Search Tree
     - [ ] Red Black Tree
@@ -26,12 +27,12 @@ Topics covered:
     - [ ] Connected Components
     - [ ] Topological Sort
     - [ ] Strong Components
+    - [ ] Dijkstra's Algorithm
+    - [ ] Ford Fulkerson
     - [ ] Minimum Spanning Trees (MST)
     - [ ] Greedy Algorithms
         - [ ] Kruskal's Algorithm
         - [ ] Prim's  Algorithm
-    - [ ] Dijkstra's Algorithm
-    - [ ] Ford Fulkerson
 - [ ] Radix Sort
     - [ ] LSD
     - [ ] MSD
