@@ -12,6 +12,9 @@
  *      2. Sort each piece recursively.
  *
  * Pivot - chosen arbitarily - is the partitioning element.
+ * Motive for partitioning :
+ *      Move Pivot to its correct position in the array such that every element to its left is smaller than Pivot and
+ *      every element to its right is greater than Pivot
  *
  * How it works?
  *      1. Take two pointers, i & j.
@@ -104,6 +107,7 @@
 
 
 class Quick {
+
     constructor (arr) {
         this.arr = arr
         // SHUFFLE can be done here!
@@ -155,7 +159,7 @@ class Quick {
 
     sort (low, high) {
         if (high <= low) return // We're done with array or array is empty!
-        let pivot = this.partition(low, high)
+        let pivot = this.partition(low, high) // position of the pivot after partitioning!
         this.sort(low, pivot - 1)
         this.sort(pivot+1, high)
     }
@@ -267,12 +271,14 @@ quick.sort(low, high)
  *
  *        →   arr[i], which is D, is less than Pivot(P).
  *             swap arr[i] and arr[lt]. Increment both 'i' & 'lt'
- *              Resulting Array:
+ *             Resulting Array:
  *                              lt             i/gt
  *              [A  B   C   D   P   P   P   P   P   V   W   Y   Z   X]
  *                              🔺
  *
  *              Are we done with PARTITIONING? Hell YES! 💥🤓
+ *              Because our pointers have crossed and we have seen everything in the array.
+ *
  *              Notice ->
  *                  Everything to the left of 'lt' is less than Pivot.✅
  *                  Every item between lt & gt is equal to Pivot.✅
@@ -280,5 +286,53 @@ quick.sort(low, high)
  *
  *              Yes! That's what we wanted. So, we are done with PARTITIONING.😅
  *
+ *
+ *              DO IT RECURSIVELY TO SORT THE ENTIRE ARRAY! 🕺🏻
+ *
  *  Code? Check below!
  */
+
+ class Quick {
+
+     constructor (arr) {
+         this.arr = arr
+     }
+
+     exchange (i, j) {
+         let temp
+         let arr = this.arr
+         temp = arr[i]
+         arr[i] = arr[j]
+         arr[j] = temp
+     }
+
+     sort (low, high) {
+         if (high <= low) return // We're done with array or array is empty!
+
+         let pivot = arr[low]
+         let i = low
+         let lt = low
+         let gt = high
+
+         // Partitioning logic
+         // i <= gt basically check if our pointers have crossed!
+         while (i <= gt) {
+             if (arr[i] < pivot) {
+                 this.exchange(lt++, i++)
+             } else if (arr[i] > pivot) {
+                 this.exchange(i, gt--)
+             } else {
+                 i++
+             }
+         }
+
+         this.sort(low, lt - 1)
+         this.sort(gt + 1, high)
+     }
+ }
+
+ const arr = [0, 1, 0, 0, 1, 1, 0, 1, 2, 2, 1, 2, 0, 1, 1, 0, 2, 0, 0, 2, 2, 2, 0, 1, 1, 2, 0]
+ const low = 0
+ const high = arr.length - 1
+ const quick = new Quick(arr)
+ quick.sort(low, high)
