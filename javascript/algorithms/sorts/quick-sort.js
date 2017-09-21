@@ -290,6 +290,7 @@ quick.sort(low, high)
  *              DO IT RECURSIVELY ON 2 HALVES (left and right) TO SORT THE ENTIRE ARRAY! 🕺🏻
  *
  *  Code? Check below!
+ *  Complexity: N Log N when all distinct items. Linear when only a constant number of distinct keys!
  */
 
  class Quick {
