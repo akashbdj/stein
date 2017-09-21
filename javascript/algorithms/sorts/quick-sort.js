@@ -181,6 +181,13 @@ quick.sort(low, high)
  *      Every item between lt & gt is equal to Pivot.
  *      Every item to right of gt is greater than Pivot.
  *
+ *      Steps:
+ *          1. Pivot => arr[low]
+ *          2. Scan from left to right
+ *              -> arr[i] < Pivot, swap arr[i] and arr[lt]. Increment both 'i' & 'lt'
+ *              -> arr[i] > Pivot, swap arr[i] and arr[gt]. Decrement 'gt'
+ *              -> arr[i] === Pivot, Increment 'i'
+ *
  *      Example:
  *          Consider this array:
  *
@@ -189,4 +196,89 @@ quick.sort(low, high)
  *          🔺                                                  high
  *          low
  *
+ *          Let's start:
+ *        →    arr[i], which is A, is less than Pivot('P') => Swap arr[i] and arr[lt]. Also, increment 'i' & 'lt'
+ *              Resulting Array:
+ *                  lt  i                                           gt
+ *              [A  P   B   X   W   P   P   V   P   D   C   P   Y   Z]
+ *                  🔺
+ *
+ *        →    Now, arr[i] is again less than Pivot => repeat above steps!
+ *              Resulting Array:
+ *                      lt  i                                       gt
+ *              [A  B   P   X   W   P   P   V   P   D   C   P   Y   Z]
+ *                      🔺
+ *
+ *        →    This time -> arr[i] > Pivot ==> swap arr[i] and arr[gt]. Decrement 'gt'.
+ *              Resulting Array:
+ *                      lt  i                                   gt
+ *              [A  B   P   Z   W   P   P   V   P   D   C   P   Y   X]
+ *                      🔺
+ *
+ *        →    Wait! arr[i], which is Z now, is again greater than Pivot.
+ *              swap arr[i] and arr[gt]. Decrement 'gt'.
+ *              Resulting Array:
+ *                      lt  i                               gt
+ *              [A  B   P   Y   W   P   P   V   P   D   C   P   Z   X]
+ *                      🔺
+ *
+ *        →    Aah!😩 arr[i] is again greater than Pivot.
+ *              swap arr[i] and arr[gt]. Decrement 'gt'.
+ *              Resulting Array:
+ *                      lt  i                           gt
+ *              [A  B   P   P   W   P   P   V   P   D   C   Y   Z   X]
+ *                      🔺
+ *
+ *        →    arr[i] is equal to Pivot => Increment 'i'. That's it! ✋🏼
+ *              Resulting Array:
+ *                      lt      i                       gt
+ *              [A  B   P   P   W   P   P   V   P   D   C   Y   Z   X]
+ *                      🔺
+ *
+ *        →    arr[i] > Pivot. What do we do? Swap arr[i] and arr[gt]. Also, decrement gt!
+ *              Resulting Array:
+ *                      lt      i                   gt
+ *              [A  B   P   P   C   P   P   V   P   D   W   Y   Z   X]
+ *                      🔺
+ *
+ *        →    Now, arr[i] is less than Pivot! => swap arr[i] and arr[lt]. Increment both 'i' & 'lt'
+ *              Resulting Array:
+ *                          lt      i               gt
+ *              [A  B   C   P   P   P   P   V   P   D   W   Y   Z   X]
+ *                          🔺
+ *
+ *        →    arr[i] is equal to Pivot! Increment 'i'! ✋🏼
+ *              Resulting Array:
+ *                          lt          i           gt
+ *              [A  B   C   P   P   P   P   V   P   D   W   Y   Z   X]
+ *                          🔺
+ *
+ *        →    Again, arr[i] is equal to Pivot! Increment 'i'! ✋🏼
+ *              Resulting Array:
+ *                          lt              i       gt
+ *              [A  B   C   P   P   P   P   V   P   D   W   Y   Z   X]
+ *                          🔺
+ *
+ *        →    arr[i], which is V, is greater than Pivot! => Swap arr[i] and arr[gt]. Also, decrement gt!
+ *              Resulting Array:
+ *                          lt              i   gt
+ *              [A  B   C   P   P   P   P   D   P   V   W   Y   Z   X]
+ *                          🔺
+ *
+ *        →   arr[i], which is D, is less than Pivot(P).
+ *             swap arr[i] and arr[lt]. Increment both 'i' & 'lt'
+ *              Resulting Array:
+ *                              lt                  i/gt
+ *              [A  B   C   D   P   P   P   P   P   V   W   Y   Z   X]
+ *                              🔺
+ *
+ *              Are we done with PARTITIONING? Hell YES! 💥🤓
+ *              Notice ->
+ *                  Everything to the left of 'lt' is less than Pivot.✅
+ *                  Every item between lt & gt is equal to Pivot.✅
+ *                  Every item to right of gt is greater than Pivot.✅
+ *
+ *              Yes! That's what we wanted. So, we are done with PARTITIONING.😅
+ *
+ *  Code? Check below!
  */
