@@ -1,5 +1,5 @@
-## Stein
-Data Structures and Algorithms implementation in JavaScript.
+# Stein
+Data Structures and Algorithms implementation in JavaScript with explanations.
 
 Topics covered:
 
@@ -44,3 +44,6 @@ Topics covered:
     - [ ] Rabin Karp
     - [ ] Knuth Morris
     - [ ] Boyer Moore
+
+### Why this repository?
+This is mostly for my personal learning and future references, but anybody can use it for learning purpose. 🍻
