@@ -14,5 +14,12 @@
  *          1) CPU Scheduling
  *          2) Graph algorithms like Dijkstra’s shortest path algorithm, Prim’s Minimum Spanning Tree, etc
  *          3) All queue applications where priority is involved.
+ *          4) Data Compression (Huffman codes)
+ *          5) Find the largest M items in a stream of N items.
+ *
+ *      Ways to implement Priority Queue
+ *          ➤ Arrays - Insertion and Deletion is expensive in order to maintain the priority.
+ *          ➤ LinkedList -> Same as array. But deletion is fast.
+ *          ➤ Binary Heap -> Best
  *
  */
