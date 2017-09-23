@@ -12,7 +12,7 @@ Topics covered:
     - [x] Quick Union
     - [x] Quick Union Weighted
     - [x] Quick Union (Weighted/Unweighted) with Path Compression
-- [ ] Priority Queues
+- [ ] [Priority Queues](javascript/data-structures/priority-queue/index.js)
     - [ ] Binary Heaps
     - [ ] Heap Sort
 - [ ] Linked Lists

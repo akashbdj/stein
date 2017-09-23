@@ -38,7 +38,7 @@
  *                    /  \     /  \
  *                   o    o   o    o            <- Level 2
  *                  / \
- *                 o    o                       <- Level 3
+ *                 o   o                        <- Level 3
  *
  *            ✔︎ Perfectly Balanced, except for Level 3
  *            ✔︎ Height of a Complete Binary Tree of N node is Log N.
