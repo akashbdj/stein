@@ -134,9 +134,138 @@
  */
 
 
+// METHOD 1
 class Merge {
+
+    constructor (arr) {
+        this.arr = arr
+        this.aux = arr.slice()
+    }
+
+    merge (low, mid, high) {
+        let arr = this.arr
+        let aux = this.aux
+
+        // copy all content of arr to aux
+        for (let k = low; k <= high; k++) {
+            aux[k] = arr[k]
+        }
+
+        // merge operation
+        let i = low
+        let j = mid + 1
+        for (let k = low; k <= high; k++) {
+            if (i > mid) { // check if our 1st sub array is exhausted
+                arr[k] = aux[j++]
+            } else if (j > high) { // check if our 2nd sub array is exhausted
+                arr[k] = aux[i++]
+            } else if (aux[i] > aux[j]) {
+                arr[k] = aux[j++]
+            } else {
+                arr[k] = aux[i++]
+            }
+        }
+    }
+
+    sort (low, high) {
+        let arr = this.arr
+        if (high <= low) return
+        let mid = Math.floor(low + (high - low)/2)
+        this.sort(low, mid)
+        this.sort(mid+1, high)
+        this.merge(low, mid, high)
+    }
 
 }
 
-const merge = new Merge()
-merge.sort()
+const arr = [21, 92, 4, 22, 1, 67, 99, 102, 76, 43, 11]
+const low = 0
+const high = arr.length - 1
+const merge = new Merge(arr)
+merge.sort(low, high)
+
+/**
+    STACK TRACE OF MERGE SORT FOR ABOVE GIVEN ARRAY:
+
+    🔺 -> marker show which elements are under operation.
+
+    LOW -> :  0
+    MID : ->  0
+    HIGH : ->  1
+    AUX :  (11) [21, 92, 4, 22, 1, 67, 99, 102, 76, 43, 11]
+    arr :  (11) [21, 92, 4, 22, 1, 67, 99, 102, 76, 43, 11]
+                 🔺  🔺
+    ----------------------------
+
+    LOW -> :  0
+    MID : ->  1
+    HIGH : ->  2
+    AUX :  (11) [21, 92, 4, 22, 1, 67, 99, 102, 76, 43, 11]
+    arr :  (11) [4, 21, 92, 22, 1, 67, 99, 102, 76, 43, 11]
+                 🔺 🔺  🔺
+    ----------------------------
+
+    LOW -> :  3
+    MID : ->  3
+    HIGH : ->  4
+    AUX :  (11) [21, 92, 4, 22, 1, 67, 99, 102, 76, 43, 11]
+    arr :  (11) [4, 21, 92, 1, 22, 67, 99, 102, 76, 43, 11]
+                            🔺 🔺
+    ----------------------------
+
+    LOW -> :  3
+    MID : ->  4
+    HIGH : ->  5
+    AUX :  (11) [21, 92, 4, 1, 22, 67, 99, 102, 76, 43, 11]
+    arr :  (11) [4, 21, 92, 1, 22, 67, 99, 102, 76, 43, 11]
+                            🔺 🔺  🔺
+    ----------------------------
+
+    LOW -> :  0
+    MID : ->  2
+    HIGH : ->  5
+    AUX :  (11) [4, 21, 92, 1, 22, 67, 99, 102, 76, 43, 11]
+    arr :  (11) [1, 4, 21, 22, 67, 92, 99, 102, 76, 43, 11]
+                🔺 🔺  🔺  🔺   🔺  🔺
+    ----------------------------
+
+    LOW -> :  6
+    MID : ->  6
+    HIGH : ->  7
+    AUX :  (11) [4, 21, 92, 1, 22, 67, 99, 102, 76, 43, 11]
+    arr :  (11) [1, 4, 21, 22, 67, 92, 99, 102, 76, 43, 11]
+                                       🔺   🔺
+    ----------------------------
+
+    LOW -> :  6
+    MID : ->  7
+    HIGH : ->  8
+    AUX :  (11) [4, 21, 92, 1, 22, 67, 99, 102, 76, 43, 11]
+    arr :  (11) [1, 4, 21, 22, 67, 92, 76, 99, 102, 43, 11]
+                                        🔺 🔺   🔺
+    ----------------------------
+
+    LOW -> :  9
+    MID : ->  9
+    HIGH : ->  10
+    AUX :  (11) [4, 21, 92, 1, 22, 67, 99, 102, 76, 43, 11]
+    arr :  (11) [1, 4, 21, 22, 67, 92, 76, 99, 102, 11, 43]
+                                                    🔺  🔺
+    ----------------------------
+
+    LOW -> :  6
+    MID : ->  8
+    HIGH : ->  10
+    AUX :  (11) [4, 21, 92, 1, 22, 67, 76, 99, 102, 11, 43]
+    arr :  (11) [1, 4, 21, 22, 67, 92, 11, 43, 76, 99, 102]
+                                        🔺 🔺  🔺   🔺  🔺
+    ----------------------------
+
+    LOW -> :  0
+    MID : ->  5
+    HIGH : ->  10
+    AUX :  (11) [1, 4, 21, 22, 67, 92, 11, 43, 76, 99, 102]
+    arr :  (11) [1, 4, 11, 21, 22, 43, 67, 76, 92, 99, 102]
+                🔺  🔺 🔺  🔺   🔺  🔺  🔺  🔺   🔺  🔺  🔺
+    ----------------------------
+ */
