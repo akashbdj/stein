@@ -27,10 +27,10 @@
 
 
 /**
- * Binary Heap
+ * Binary Heap (Min Heap or Max Heap)
  *      Based on the idea of Complete Binary Tree.
  *      Binary Tree -> Empty or Nodes to left and right binary tree.
- *      Complete Binary Tree -> Perfectly Balanced, except for the bottom level.
+ *      Complete Binary Tree -> Perfectly Balanced, except for the bottom level and the bottom level has all keys as left as possible.
  *
  *                          o                   <- Level 0
  *                       /     \
@@ -72,5 +72,8 @@
  *             Parent of node at 'k' is at k/2. Here k = 10(H), so parent will be at 10/2 = 5. Element at index 5 is N, which is correct!💥
  *
  *             So, we don't need actual tree to represent these data structures. Array indices are sufficient.
+ *
+ *
+ * Time complexity for Building a Binary Heap is O(N).
  *
  */
