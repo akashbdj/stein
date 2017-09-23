@@ -282,3 +282,56 @@ merge.sort(low, high)
     arr :  (11) [1, 4, 11, 21, 22, 43, 67, 76, 92, 99, 102]
     ----------------------------
  */
+
+
+
+
+// METHOD 2
+// Logic is same but implementation is more readable, imo!
+// Also, this implementation uses JavaScript's native functions.
+
+class Merge {
+
+    constructor (arr) {
+        this.arr = arr
+        this.sortedArray = this.sort(arr)
+    }
+
+    getSortedArray () {
+        return this.sortedArray
+    }
+
+    merge (left, right) {
+        let i = 0
+        let j = 0
+        let output = []
+
+        while (i < left.length && j < right.length) {
+            if (left[i] > right[j]) {
+                output.push(right[j++])
+            } else {
+                output.push(left[i++])
+            }
+        }
+
+        let unprocessedArray = (i < left.length ? left.slice(i) : right.slice(j))
+        return output.concat(unprocessedArray)
+    }
+
+    sort (arr) {
+        if (arr.length > 1) {
+            const mid = arr.length >> 1
+            const leftSubarray = this.sort(arr.slice(0, mid))
+            const rightSubarray = this.sort(arr.slice(mid))
+
+            arr = this.merge(leftSubarray, rightSubarray)
+        }
+
+        return arr
+    }
+
+}
+
+const arr = [21, 92, 4, 22, 1, 67]
+const merge = new Merge(arr)
+merge.getSortedArray()
