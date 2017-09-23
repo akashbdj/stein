@@ -90,17 +90,22 @@
  *                    aux = [E, E, G, M, R, A, C, E, R, T]
  *                                        🔺 i        j         => 'i' is incremented, 'j' remains the same.
  *
- *    "Since our 1st sub array is exhausted, we can simply merge the remaining part of the 2nd subarray to our MUTATING ORIGINAL ARRAY(arr)"
- *     How can we simple merge the remaining part without comparing? Because 2 sub arrays were already sorted before we started merging two sub arrays.
+ *    Since our 1st sub array is exhausted, we can simply merge the remaining part of the 2nd subarray
+ *    to our MUTATING ORIGINAL ARRAY(arr)
+ *
+ *     How can we simple merge the remaining part without comparing? Because 2 sub arrays were already sorted
+ *     before we started merging two sub arrays.
+ *
  *     Since one of our array is exhausted, we don't need to check/compare anything.
  *
- *     Do we really need to merge the remaining part? No! Because we copied all the content before we started merging, so it's already there if you notice.
- *     In this case, R & T are already present in 'arr' because of the copy OPERATION we performed in the beginning. 😅
+ *     Do we really need to merge the remaining part? No! Because we copied all the content before we started
+ *     merging, so it's already there if you notice. In this case, R & T are already present in 'arr' because of
+ *     the copy OPERATION we performed in the beginning. 😅
  *
  *     arr = [A, C, E, E, E, G, M, R, R, T] is our SORTED ARRAY after MERGE OPERATION.
  *
  *
- *                        --------------- T H A T 'S    H O W     M E R G E     O P E R A T I O N     W O R K S -----------------
+ *       --------------- T H A T 'S    H O W     M E R G E     O P E R A T I O N     W O R K S -----------------
  *
  * Complexity: N Log N
  * Stability: Stable. Why?
