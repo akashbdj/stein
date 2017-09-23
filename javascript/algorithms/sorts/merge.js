@@ -25,12 +25,12 @@
  *                                                based on the conditions described below
  *      aux = [E, E, G, M, R, A, C, E, R, T]
  *             i            🔺j               ==> 2 pointers i & j. Both starts from the 1st element of two sub-arrays.
- *                                                I've used 🔺 to show the seperation of sub-arrays.
+ *                                                I've used 🔺 to show the separation of sub-arrays.
  *
  *      Conditions:
- *        1. aux[i] > aux[j] ===> arr[k] = aux[j] and also increment 'k' and 'j'
- *        2. aux[i] < aux[j] ===> arr[k] = aux[i] and also increment 'k' and 'i'
- *        3. aux[i] === aux[j] ===> arr[k] = aux[i] and also increment 'k' and 'i'
+ *        1. aux[i] > aux[j]    ➤ arr[k] = aux[j] and also increment 'k' and 'j'
+ *        2. aux[i] < aux[j]    ➤ arr[k] = aux[i] and also increment 'k' and 'i'
+ *        3. aux[i] === aux[j]  ➤ arr[k] = aux[i] and also increment 'k' and 'i'
  *
  *      Let's start:
  *        → compare aux[i] and aux[j]
