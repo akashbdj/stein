@@ -12,7 +12,20 @@
  * How to find the mid of the array?
  *    ➤ mid = low + (high - low) / 2
  *
- * How MERGE OPERATION works?
+ * SORTING HAPPENS IN THE MERGE OPERATION ONLY!
+ *    ➤ Since it's a Divide and Conquer method(Recursive), we break down our array into sub arrays till
+ *       each subarray is has length equal to 1. (N single item sub-arrays)
+ *       Consider this array:  [E, A, M, A, R, X, C, K, O, L]
+ *       After we are done with 'sub-arraying' this array, we get:
+ *       [E] [A] [M] [A] [R] [X] [C] [K] [O] [L]
+ *
+ *       We take 1st two element -> Sort and Merge.
+ *       If you read 'HOW MERGE OPERATION WORKS', you see we have 3 conditions. That's were you sort them. And,
+ *       when you put them in the arr (See, arr[k] = aux[i or j]) => That's where you merge them.
+ *
+ * Let's see this in more detail now :-
+ *
+ * So, How MERGE OPERATION works?
  *    Consider this array: [E, E, G, M, R, A, C, E, R, T]
  *    → Break it in 2 part by finding the 'mid' of the array. (mid = low + (high - low) / 2)
  *    → Initialize an auxilliary array (aux) and copy the content of 'arr' into 'aux'
