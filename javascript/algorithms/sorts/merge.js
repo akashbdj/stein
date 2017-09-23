@@ -187,7 +187,7 @@ merge.sort(low, high)
 /**
     STACK TRACE OF MERGE SORT FOR ABOVE GIVEN ARRAY:
 
-    🔺 -> marker show which elements are under operation.
+    🔺 -> marker shows which elements are under operation.
 
     LOW -> :  0
     MID : ->  0

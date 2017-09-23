@@ -5,7 +5,7 @@ Topics covered:
 
 - [x] [Insertion Sort](javascript/algorithms/sorts/insertion.js)
 - [x] [Quick Sort](javascript/algorithms/sorts/quick-sort.js)
-- [ ] Merge Sort
+- [x] [Merge Sort](javascript/algorithms/sorts/merge.js)
 - [x] [Dutch National Flag Problem](javascript/algorithms/sorts/quick-sort.js#L180)
 - [x] [Quick Union/Find](javascript/algorithms/quick-find-union/index.js)
     - [x] Quick Find
