@@ -86,6 +86,10 @@ class BinaryHeap {
         this.count = 0
     }
 
+    getTypeOf (item) {
+        return Object.prototype.toString.call(item)
+    }
+
     parent (index) {
         return Math.floor((index - 1)/2)
     }
@@ -113,7 +117,7 @@ class BinaryHeap {
 
     swim (index) {
         let list = this.list
-        while (index > 0 && list[this.parent(index)] < arr[index]) {
+        while (index > 0 && list[this.parent(index)] < list[index]) {
             this.exchange(this.parent(index), index)
             index = this.parent(index)
         }
@@ -136,8 +140,8 @@ class BinaryHeap {
 
     insert (item) {
         this.list.push(item)
-        this.count++
         this.swim(this.count)
+        this.count++
     }
 
     deleteMax () {
@@ -156,6 +160,20 @@ class BinaryHeap {
         this.list.pop()
         this.count--
         this.sink(0)
+
+        return max
+    }
+
+    buildHeap (data) {
+        if (this.getTypeOf(data) === '[object Array]') {
+            data.map(datum => this.insert(datum))
+        } else {
+            this.insert(data)
+        }
     }
 
 }
+
+let list = [2, 4, 1, 5, 9, 6, 22, 11, 12]
+let bh = new BinaryHeap()
+bh.buildHeap(list)
