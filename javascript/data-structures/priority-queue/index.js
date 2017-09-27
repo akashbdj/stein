@@ -166,6 +166,7 @@ class BinaryHeap {
         return max
     }
 
+    // This will build a MAX_HEAP
     buildHeap (data) {
         if (this.getTypeOf(data) === '[object Array]') {
             data.map(datum => this.insert(datum))
