@@ -133,6 +133,8 @@ class BinaryHeap {
             if (list[this.rightChild(index)] > list[max]) {
                 max = this.rightChild(index)
             }
+
+            if (max === index) break
             this.exchange(index, max)
             index = max
         }
