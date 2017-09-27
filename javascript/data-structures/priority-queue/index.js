@@ -77,3 +77,89 @@
  * Time complexity for Building a Binary Heap is O(N).
  *
  */
+
+// This is an example of MAX_HEAP
+class BinaryHeap {
+
+    constructor () {
+        this.list = []
+        this.count = 0
+    }
+
+    parent (index) {
+        return Math.floor((index - 1)/2)
+    }
+
+    leftChild (index) {
+        return ((2 * index) + 1)
+    }
+
+    rightChild (index) {
+        return ((2 * index) + 2)
+    }
+
+    root () {
+        return this.list.length ? this.list[0] : null
+    }
+
+    exchange (i, j) {
+        let temp
+        let list = this.list
+
+        temp = list[i]
+        list[i] = list[j]
+        list[j] = temp
+    }
+
+    swim (index) {
+        let list = this.list
+        while (index > 0 && list[this.parent(index)] < arr[index]) {
+            this.exchange(this.parent(index), index)
+            index = this.parent(index)
+        }
+    }
+
+    sink (index) {
+        let list = this.list
+        while (this.leftChild(index) <= this.count) {
+            let max = index
+            if (list[this.leftChild(index)] > list[index]) {
+                max = this.leftChild(index)
+            }
+            if (list[this.rightChild(index)] > list[max]) {
+                max = this.rightChild(index)
+            }
+            this.exchange(index, max)
+            index = max
+        }
+    }
+
+    insert (item) {
+        this.list.push(item)
+        this.count++
+        this.swim(this.count)
+    }
+
+    deleteMax () {
+        if (this.count < 1) return new Error('Heap is empty, bro!')
+
+        let list = this.list
+        let max = list[0]
+
+        if (this.count === 1) {
+            this.count--
+            list.pop()
+            return max
+        }
+
+        list[0] = list[this.count - 1]
+        this.list.pop()
+        this.count--
+        this.sink(0)
+    }
+
+
+
+
+
+}
