@@ -158,8 +158,4 @@ class BinaryHeap {
         this.sink(0)
     }
 
-
-
-
-
 }
