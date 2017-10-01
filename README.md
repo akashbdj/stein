@@ -1,5 +1,6 @@
 # Stein
 Data Structures and Algorithms implementation in JavaScript with explanations.
+(Implementation in Python has also been added by [@anantkaushik](https://github.com/anantkaushik))
 
 Topics covered:
 
