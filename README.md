@@ -14,8 +14,8 @@ Topics covered:
     - [x] Quick Union Weighted
     - [x] Quick Union (Weighted/Unweighted) with Path Compression
 - [ ] [Priority Queues](javascript/data-structures/priority-queue/index.js)
-    - [x] Binary Heaps
-    - [ ] Heap Sort
+    - [x] [Binary Heaps](javascript/data-structures/priority-queue/index.js#L28)
+    - [x] [Heap Sort](javascript/algorithms/sorts/heap.js)
 - [ ] Linked Lists
 - [ ] Trees
     - [ ] Binary Search Tree
