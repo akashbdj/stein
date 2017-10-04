@@ -24,8 +24,6 @@
  *
  */
 
-
-
 /**
  * Binary Heap (Min Heap or Max Heap)
  *      Based on the idea of Complete Binary Tree.
@@ -80,33 +78,32 @@
 
 // This is an example of MAX_HEAP
 class BinaryHeap {
-
-    constructor () {
+    constructor() {
         this.list = []
         this.count = 0
     }
 
-    getTypeOf (item) {
+    getTypeOf(item) {
         return Object.prototype.toString.call(item)
     }
 
-    parent (index) {
-        return Math.floor((index - 1)/2)
+    parent(index) {
+        return Math.floor((index - 1) / 2)
     }
 
-    leftChild (index) {
-        return ((2 * index) + 1)
+    leftChild(index) {
+        return 2 * index + 1
     }
 
-    rightChild (index) {
-        return ((2 * index) + 2)
+    rightChild(index) {
+        return 2 * index + 2
     }
 
-    root () {
+    root() {
         return this.list.length ? this.list[0] : null
     }
 
-    exchange (i, j) {
+    exchange(i, j) {
         let temp
         let list = this.list
 
@@ -115,7 +112,7 @@ class BinaryHeap {
         list[j] = temp
     }
 
-    swim (index) {
+    swim(index) {
         let list = this.list
         while (index > 0 && list[this.parent(index)] < list[index]) {
             this.exchange(this.parent(index), index)
@@ -123,7 +120,7 @@ class BinaryHeap {
         }
     }
 
-    sink (index) {
+    sink(index) {
         let list = this.list
         while (this.leftChild(index) <= this.count) {
             let max = index
@@ -140,13 +137,13 @@ class BinaryHeap {
         }
     }
 
-    insert (item) {
+    insert(item) {
         this.list.push(item)
         this.swim(this.count)
         this.count++
     }
 
-    deleteMax () {
+    deleteMax() {
         if (this.count < 1) return new Error('Heap is empty, bro!')
 
         let list = this.list
@@ -167,14 +164,13 @@ class BinaryHeap {
     }
 
     // This will build a MAX_HEAP
-    buildHeap (data) {
+    buildHeap(data) {
         if (this.getTypeOf(data) === '[object Array]') {
             data.map(datum => this.insert(datum))
         } else {
             this.insert(data)
         }
     }
-
 }
 
 let list = [2, 4, 1, 5, 9, 6, 22, 11, 12]
