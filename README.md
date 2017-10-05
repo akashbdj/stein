@@ -16,7 +16,7 @@ Topics covered:
 - [ ] [Priority Queues](javascript/data-structures/priority-queue/index.js)
     - [x] [Binary Heaps](javascript/data-structures/priority-queue/index.js#L28)
     - [x] [Heap Sort](javascript/algorithms/sorts/heap.js)
-- [ ] Linked Lists
+- [ ] [Linked Lists](javascript/data-structures/linked-list/index.js)
 - [ ] Trees
     - [ ] Binary Search Tree
     - [ ] Red Black Tree
