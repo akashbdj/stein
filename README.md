@@ -18,7 +18,7 @@ Topics covered:
     - [x] [Heap Sort](javascript/algorithms/sorts/heap.js)
 - [ ] [Linked Lists](javascript/data-structures/linked-list/index.js)
 - [ ] Trees
-    - [ ] Binary Search Tree
+    - [x] Binary Search Tree
     - [ ] Red Black Tree
     - [ ] AVL Tree
 - [ ] Graphs
@@ -43,7 +43,7 @@ Topics covered:
     - [ ] R-way Tries
 - [ ] Strings
     - [ ] Rabin Karp
-    - [ ] Knuth Morris
+    - [x] Knuth Morris
     - [ ] Boyer Moore
 
 ### Why this repository?
