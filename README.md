@@ -24,7 +24,7 @@ Topics covered:
 - [ ] Graphs
     - [ ] Graph API's
     - [ ] Depth First Search (DFS)
-    - [ ] Breadth First Search (BFS)
+    - [x] Breadth First Search (BFS)
     - [ ] Connected Components
     - [ ] Topological Sort
     - [ ] Strong Components
