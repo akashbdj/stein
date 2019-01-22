@@ -23,7 +23,7 @@ Topics covered:
     - [ ] AVL Tree
 - [ ] Graphs
     - [ ] Graph API's
-    - [ ] Depth First Search (DFS)
+    - [x] Depth First Search (DFS)
     - [x] Breadth First Search (BFS)
     - [ ] Connected Components
     - [ ] Topological Sort
